@@ -32,9 +32,12 @@
   // небо, чернила и часы по прокрутке
   var hex = function (s) { s = s.trim(); return [1, 3, 5].map(function (k) { return parseInt(s.slice(k, k + 2), 16); }); };
   var toMin = function (t) { var p = t.split(':'); return +p[0] * 60 + +p[1]; };
+  var sky = function (v) { var c = v.split(','); return { top: hex(c[0]), bot: hex(c[1]) }; };
   var secs = Array.prototype.map.call(document.querySelectorAll('[data-time]'), function (el) {
-    var c = el.dataset.sky.split(',');
-    return { el: el, min: toMin(el.dataset.time), top: hex(c[0]), bot: hex(c[1]), ink: el.dataset.ink, stars: +(el.dataset.stars || 0), phase: el.dataset.phase };
+    return {
+      el: el, min: toMin(el.dataset.time), ink: el.dataset.ink, stars: +(el.dataset.stars || 0), phase: el.dataset.phase,
+      light: sky(el.dataset.sky), dark: sky(el.dataset.skyDark || el.dataset.sky)
+    };
   });
   var lerp = function (a, b, t) { return a + (b - a) * t; };
   var mix = function (a, b, t) { return a.map(function (v, k) { return Math.round(lerp(v, b[k], t)); }).join(', '); };
@@ -54,10 +57,12 @@
     else if (i > 0 && mid < rects[i].top + Z) { a = i - 1; t = 0.5 + (mid - rects[i].top) / (2 * Z); }
     t = Math.min(1, Math.max(0, t));
     var s = t * t * (3 - 2 * t), A = secs[a], B = secs[b];
-    root.style.setProperty('--sky-top', mix(A.top, B.top, s));
-    root.style.setProperty('--sky-bot', mix(A.bot, B.bot, s));
+    var dark = root.dataset.theme === 'dark', SA = dark ? A.dark : A.light, SB = dark ? B.dark : B.light;
+    root.style.setProperty('--sky-top', mix(SA.top, SB.top, s));
+    root.style.setProperty('--sky-bot', mix(SA.bot, SB.bot, s));
     root.style.setProperty('--stars', lerp(A.stars, B.stars, s).toFixed(2));
-    var ink = s < 0.5 ? A.ink : B.ink;
+    // в тёмной теме все главы тёмные, чернила всегда светлые
+    var ink = dark ? 'light' : s < 0.5 ? A.ink : B.ink;
     if (root.dataset.ink !== ink) root.dataset.ink = ink;
     var mins = Math.round(lerp(A.min, B.min, t));
     clockTime.textContent = pad(Math.floor(mins / 60)) + ':' + pad(mins % 60);
@@ -71,6 +76,25 @@
   }, { passive: true });
   addEventListener('resize', frame);
   frame();
+
+  // тема: сама выбирается в <head>, кнопка в шапке переключает её вручную;
+  // если ручной выбор совпал с автоматическим, он забывается и тема снова следует за системой и часами
+  var themeBtn = document.getElementById('themeBtn'), osDark = matchMedia('(prefers-color-scheme: dark)');
+  var autoTheme = function () { var h = new Date().getHours(); return osDark.matches || h >= 20 || h < 7 ? 'dark' : 'light'; };
+  var saved = function () { try { return localStorage.getItem('theme'); } catch (e) { return null; } };
+  function setTheme(th) {
+    if (root.dataset.theme !== th) { root.dataset.theme = th; frame(); }
+    themeBtn.setAttribute('aria-pressed', th === 'dark');
+  }
+  themeBtn.addEventListener('click', function () {
+    var th = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    try { if (th === autoTheme()) localStorage.removeItem('theme'); else localStorage.setItem('theme', th); } catch (e) {}
+    setTheme(th);
+  });
+  var follow = function () { if (!saved()) setTheme(autoTheme()); };
+  if (osDark.addEventListener) osDark.addEventListener('change', follow);
+  document.addEventListener('visibilitychange', follow);
+  setTheme(root.dataset.theme);
 
   // появление глав
   var io = new IntersectionObserver(function (entries) {

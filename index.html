@@ -27,7 +27,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add('js');</script>
+<script>
+(function (r) {
+  r.classList.add('js');
+  // тёмная тема, если она включена в системе или у посетителя вечер и ночь (20:00–7:00); выбор кнопкой в шапке важнее
+  var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+  var h = new Date().getHours();
+  r.dataset.theme = t === 'light' || t === 'dark' ? t : matchMedia('(prefers-color-scheme: dark)').matches || h >= 20 || h < 7 ? 'dark' : 'light';
+})(document.documentElement);
+</script>
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -53,6 +61,7 @@
       <span id="clockTime">07:40</span><span class="phase" id="clockPhase">утро</span>
     </span>
     <div class="top-r">
+      <button class="theme" id="themeBtn" type="button" aria-pressed="false" aria-label="Тёмная тема" title="Тёмная тема"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"/></svg></button>
       <nav class="lang" aria-label="Язык"><a href="./" hreflang="ru" lang="ru" aria-current="page">RU</a><a href="en/" hreflang="en" lang="en">EN</a></nav>
       <a class="top-cta" href="#contact">Контакты</a>
     </div>
@@ -62,7 +71,7 @@
 <main id="top">
 
   <!-- 07:40 — утро -->
-  <section class="hero" data-time="07:40" data-sky="#191c37,#7d5a77" data-ink="light" data-stars="0.7" data-phase="утро">
+  <section class="hero" data-time="07:40" data-sky="#191c37,#7d5a77" data-sky-dark="#141630,#4c3650" data-ink="light" data-stars="0.7" data-phase="утро">
     <div class="wrap">
       <div class="eyebrow">Илья Баженов</div>
       <h1>Шесть приложений<br>для рабочего дня</h1>
@@ -85,7 +94,7 @@
   </section>
 
   <!-- 09:48 — OWA Widget -->
-  <section class="ch" id="owawidget" data-time="09:48" data-sky="#efe6d8,#f8f3ea" data-ink="dark" data-phase="утро" style="--accent:#0a64d6">
+  <section class="ch" id="owawidget" data-time="09:48" data-sky="#efe6d8,#f8f3ea" data-sky-dark="#1c1915,#221e19" data-ink="dark" data-phase="утро" style="--accent:#0a64d6">
     <div class="wrap ch-grid">
       <div class="ch-text rv">
         <div class="ch-time">09:48</div>
@@ -123,7 +132,7 @@
   </section>
 
   <!-- 10:47 — VoiceGrep -->
-  <section class="ch" id="voicegrep" data-time="10:47" data-sky="#eef1ee,#f7f8f4" data-ink="dark" data-phase="утро" style="--accent:#0b8f78">
+  <section class="ch" id="voicegrep" data-time="10:47" data-sky="#eef1ee,#f7f8f4" data-sky-dark="#151a19,#1a1f1d" data-ink="dark" data-phase="утро" style="--accent:#0b8f78">
     <div class="wrap ch-grid flip">
       <div class="ch-text rv">
         <div class="ch-time">10:47</div>
@@ -155,7 +164,7 @@
   </section>
 
   <!-- 11:30 — ImpAgent -->
-  <section class="ch" id="impagent" data-time="11:30" data-sky="#eceef1,#f6f6f5" data-ink="dark" data-phase="день" style="--accent:#e24e2a">
+  <section class="ch" id="impagent" data-time="11:30" data-sky="#eceef1,#f6f6f5" data-sky-dark="#17191d,#1c1e21" data-ink="dark" data-phase="день" style="--accent:#e24e2a">
     <div class="wrap ch-grid">
       <div class="ch-text rv">
         <div class="ch-time">11:30</div>
@@ -191,7 +200,7 @@
   </section>
 
   <!-- 13:10 — Walkship -->
-  <section class="ch" id="walkship" data-time="13:10" data-sky="#e3ecd6,#f3f4e6" data-ink="dark" data-phase="день" style="--accent:#4e7f2c">
+  <section class="ch" id="walkship" data-time="13:10" data-sky="#e3ecd6,#f3f4e6" data-sky-dark="#171c13,#1d2218" data-ink="dark" data-phase="день" style="--accent:#4e7f2c">
     <div class="wrap ch-grid flip">
       <div class="ch-text rv">
         <div class="ch-time">13:10</div>
@@ -229,7 +238,7 @@
   </section>
 
   <!-- 17:20 — Seatkey -->
-  <section class="ch" id="seatkey" data-time="17:20" data-sky="#f3d9b4,#eec393" data-ink="dark" data-phase="вечер" style="--accent:#3550d8">
+  <section class="ch" id="seatkey" data-time="17:20" data-sky="#f3d9b4,#eec393" data-sky-dark="#291e14,#32241a" data-ink="dark" data-phase="вечер" style="--accent:#3550d8">
     <div class="wrap ch-grid">
       <div class="ch-text rv">
         <div class="ch-time">17:20</div>
