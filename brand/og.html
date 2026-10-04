@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru"><head><meta charset="utf-8">
-<!-- Исходник картинки для превью ссылок: assets/og.png (1200×630). Пересобрать: brand/render.sh -->
+<!-- Исходник картинки для превью ссылок: assets/og.png (1200×630), og.html?en — assets/og-en.png. Пересобрать: brand/render.sh -->
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; box-sizing: border-box; }
@@ -39,4 +39,11 @@
     <h1>Шесть приложений<br>для рабочего дня</h1>
     <p>Илья Баженов · приложения для Mac и ИИ-агентов</p>
   </div>
+  <script>
+    if (location.search === '?en') {
+      document.documentElement.lang = 'en';
+      document.querySelector('h1').innerHTML = 'Six apps<br>for the workday';
+      document.querySelector('.head p').textContent = 'Ilya Bazhenov · apps for Mac and AI agents';
+    }
+  </script>
 </body></html>
