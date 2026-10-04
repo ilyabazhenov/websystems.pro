@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <style>.h{stroke:#1d1913}@media (prefers-color-scheme:dark){.h{stroke:#f5f0e8}}</style>
+  <path class="h" d="M3 25h26" stroke-opacity=".55" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="4.4" cy="18.9" r="2.5" fill="#2f7bf6"/>
+  <circle cx="7.5" cy="13.5" r="2.5" fill="#19c2a6"/>
+  <circle cx="12.9" cy="10.4" r="2.5" fill="#ff6a45"/>
+  <circle cx="19.1" cy="10.4" r="2.5" fill="#8db86b"/>
+  <circle cx="24.5" cy="13.5" r="2.5" fill="#5b7cff"/>
+  <circle cx="27.6" cy="18.9" r="2.5" fill="#ffb547"/>
+</svg>

@@ -3,26 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>websystems.pro — шесть приложений на один рабочий день</title>
-<meta name="description" content="Илья Баженов делает софт для Mac и ИИ-агентов: OWA Widget, VoiceGrep, ImpAgent, Walkship, Seatkey и Routekeeper — каждый в свой час рабочего дня.">
-<meta property="og:title" content="Шесть приложений на один рабочий день">
-<meta property="og:description" content="OWA Widget, VoiceGrep, ImpAgent, Walkship, Seatkey и Routekeeper — софт для Mac и ИИ-агентов.">
+<title>websystems.pro — приложения Ильи Баженова</title>
+<meta name="description" content="Приложения для Mac и инструменты для работы с ИИ-агентами: OWA Widget, VoiceGrep, ImpAgent, Walkship, Seatkey и Routekeeper.">
+<meta property="og:title" content="websystems.pro — приложения Ильи Баженова">
+<meta property="og:description" content="Приложения для Mac и инструменты для работы с ИИ-агентами: OWA Widget, VoiceGrep, ImpAgent, Walkship, Seatkey и Routekeeper.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://websystems.pro/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231b1f3a'/%3E%3Ccircle cx='32' cy='40' r='11' fill='%23ffc27a'/%3E%3Cpath d='M10 40h44' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta property="og:site_name" content="websystems.pro">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://websystems.pro/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Шесть приложений для рабочего дня: иконки OWA Widget, VoiceGrep, ImpAgent, Walkship, Seatkey и Routekeeper на дуге над горизонтом">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js');</script>
 <style>
   :root {
     --sky-top: 27, 31, 58;
     --sky-bot: 122, 90, 120;
     --stars: 0.8;
-    --serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
     --sans: "Golos Text", system-ui, -apple-system, sans-serif;
     --mono: "JetBrains Mono", ui-monospace, monospace;
-    --hand: "Caveat", "Segoe Print", cursive;
   }
   :root[data-ink="dark"] {
     --ink: #1d1913;
@@ -72,8 +79,11 @@
     transition: border-color .5s;
   }
   .top .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 60px; }
-  .logo { text-decoration: none; font-weight: 600; letter-spacing: -0.01em; font-size: 16px; }
-  .logo span { color: var(--ink-soft); font-weight: 500; }
+  .logo { display: inline-flex; width: 40px; height: 40px; margin-left: -4px; }
+  .logo svg { width: 100%; height: 100%; overflow: visible; }
+  .logo .hz { stroke: var(--ink); stroke-opacity: .5; transition: stroke .5s; }
+  .logo circle { transition: transform .35s cubic-bezier(.3, .7, .4, 1.5); transition-delay: calc(var(--i) * 40ms); }
+  .logo:hover circle { transform: translateY(-1.6px); }
   .clock {
     display: inline-flex; align-items: center; gap: 9px;
     font: 500 13.5px var(--mono); padding: 6px 14px; border-radius: 99px;
@@ -96,23 +106,10 @@
   .hero .wrap { width: 100%; }
   .eyebrow { font: 500 13px var(--mono); color: var(--ink-soft); letter-spacing: 0.04em; }
   h1 {
-    font-family: var(--serif); font-weight: 500;
-    font-size: clamp(50px, 7.2vw, 112px); line-height: 0.94; letter-spacing: -0.02em;
-    margin: 20px 0 0;
+    font-weight: 600; font-size: clamp(38px, 5.4vw, 76px); line-height: 1.02; letter-spacing: -0.035em;
+    margin: 18px 0 0;
   }
-  h1 em { font-style: italic; font-weight: 500; color: #ffd3a3; }
   .lead { max-width: 660px; margin: 26px 0 0; color: var(--ink-soft); font-size: 18px; }
-  .lead b { color: var(--ink); font-weight: 500; }
-  .now-pill {
-    display: inline-flex; align-items: center; gap: 10px; margin-top: 28px;
-    font-size: 15px; text-decoration: none;
-    padding: 9px 16px 9px 12px; border-radius: 99px;
-    background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.18);
-    transition: background .2s;
-  }
-  .now-pill:hover { background: rgba(255, 255, 255, 0.18); }
-  .now-pill img { width: 24px; height: 24px; }
-  .now-pill b { font-weight: 600; }
 
   .arc-wrap { margin-top: auto; padding-top: 48px; }
   .arc { position: relative; height: 240px; flex: none; }
@@ -141,10 +138,6 @@
   .pt:hover img { transform: translateY(-6px) scale(1.08); }
   .pt .lbl { display: block; margin-top: 8px; font: 500 12px var(--mono); color: var(--ink-soft); white-space: nowrap; text-shadow: 0 1px 10px rgba(20, 14, 40, 0.7); }
   .pt .lbl b { display: block; font: 500 13px var(--sans); color: var(--ink); }
-  .scroll-hint {
-    position: absolute; left: 50%; bottom: 20px; margin-left: -70px;
-    font: 600 24px var(--hand); color: #ffd3a3; transform: rotate(-4deg);
-  }
 
   /* ---------- chapters ---------- */
   .ch { min-height: 100vh; display: flex; align-items: center; padding: 130px 0 110px; }
@@ -152,9 +145,9 @@
   .ch-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: 72px; align-items: center; }
   .ch-grid.flip .ch-text { order: 2; }
   .ch-time {
-    font: 500 clamp(76px, 10vw, 148px)/0.82 var(--serif);
-    letter-spacing: -0.03em; color: var(--ink-faint);
-    margin-left: -6px; font-variant-numeric: lining-nums;
+    font: 300 clamp(56px, 7vw, 104px)/0.9 var(--mono);
+    letter-spacing: -0.04em; color: var(--ink-faint);
+    margin-left: -4px;
     transition: color .5s;
   }
   .ch-app { display: flex; align-items: center; gap: 14px; margin-top: 26px; }
@@ -162,8 +155,8 @@
   .ch-app b { display: block; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
   .ch-app span { display: block; font: 400 12.5px var(--mono); color: var(--ink-soft); margin-top: 1px; }
   .ch h2 {
-    font: italic 500 clamp(36px, 4.4vw, 60px)/1.0 var(--serif);
-    letter-spacing: -0.015em; margin: 26px 0 0; max-width: 15ch;
+    font-weight: 600; font-size: clamp(28px, 2.9vw, 40px); line-height: 1.12;
+    letter-spacing: -0.025em; margin: 24px 0 0; max-width: 18ch;
   }
   .story { color: var(--ink-soft); margin: 22px 0 0; max-width: 46ch; }
   .ch-links { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 30px; }
@@ -180,11 +173,6 @@
   .sub:hover { border-color: var(--ink); }
 
   .ch-visual { position: relative; }
-  .note {
-    position: absolute; font: 600 25px/1.05 var(--hand); color: var(--accent);
-    transform: rotate(-4deg); white-space: nowrap; pointer-events: none;
-  }
-  .note svg { display: inline-block; width: 46px; height: 30px; vertical-align: middle; }
 
   /* shared vignette chrome */
   .v {
@@ -345,26 +333,16 @@
   .rk-foot { display: flex; justify-content: space-between; padding: 12px 18px; font-size: 12px; color: #a3abc4; border-top: 1px solid rgba(255, 255, 255, 0.07); }
   .rk-foot b { color: #7fd8a4; font-weight: 500; }
 
-  /* ---------- interlude ---------- */
-  .interlude { min-height: 80vh; display: grid; place-items: center; text-align: center; padding: 120px 0; }
-  .interlude .mono { font-size: 13px; color: var(--ink-soft); letter-spacing: .04em; }
-  .interlude p { font: italic 500 clamp(34px, 4.6vw, 64px)/1.05 var(--serif); margin: 18px auto 0; max-width: 18ch; }
-
   /* ---------- end ---------- */
   .end { min-height: 100vh; padding: 140px 0 60px; display: flex; flex-direction: column; justify-content: center; }
-  .moon {
-    width: 64px; height: 64px; border-radius: 50%; margin-bottom: 30px;
-    box-shadow: inset -14px 6px 0 0 #f1e9d6; filter: drop-shadow(0 0 22px rgba(241, 233, 214, .35));
-  }
-  .end h2 { font: italic 500 clamp(48px, 7vw, 100px)/0.95 var(--serif); margin: 0; letter-spacing: -0.02em; }
-  .end .story { font-size: 18px; max-width: 52ch; }
-  .sign { font: 600 34px var(--hand); color: #ffd3a3; margin-top: 18px; transform: rotate(-3deg); display: inline-block; }
-  .index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 32px; margin-top: 72px; border-top: 1px solid var(--hair); }
-  .index a { display: grid; grid-template-columns: 40px 1fr auto; gap: 14px; align-items: center; padding: 16px 0; text-decoration: none; border-bottom: 1px solid var(--hair); }
+  .end h2 { font-size: clamp(28px, 2.9vw, 40px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.12; margin: 0; }
+  .end .contact { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px; margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--hair); }
+  .end .contact .story { margin: 10px 0 0; }
+  .index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 32px; margin-top: 28px; border-top: 1px solid var(--hair); }
+  .index a { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: center; padding: 16px 0; text-decoration: none; border-bottom: 1px solid var(--hair); }
   .index img { width: 40px; height: 40px; }
   .index b { display: block; font-weight: 500; font-size: 15.5px; }
   .index span { display: block; font-size: 13.5px; color: var(--ink-soft); }
-  .index i { font: 400 12px var(--mono); font-style: normal; color: var(--ink-soft); }
   .index a:hover b { text-decoration: underline; text-underline-offset: 3px; }
   footer { padding: 30px 0 40px; font-size: 13.5px; color: var(--ink-soft); }
   footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
@@ -381,20 +359,16 @@
     .wrap { padding: 0 16px; }
     .top .wrap { grid-template-columns: auto 1fr; gap: 10px; height: 54px; }
     .top-cta { display: none; }
+    .logo { width: 36px; height: 36px; }
     .clock { justify-self: end; padding: 5px 11px; font-size: 12.5px; }
     .hero { padding-top: 100px; }
     .lead { font-size: 16.5px; }
-    .now-pill { font-size: 14px; border-radius: 16px; align-items: flex-start; }
-    .now-pill img { margin-top: -1px; }
     .arc { height: 230px; margin-top: 64px; }
     .pt img { width: 44px; height: 44px; }
     .pt .lbl b { display: none; }
     .pt .lbl { font-size: 10.5px; margin-top: 5px; }
-    .scroll-hint { display: none; }
     .sun { width: 70px; height: 70px; bottom: -35px; }
     .ch { padding: 96px 0 72px; min-height: auto; }
-    .note { position: static; display: block; margin-top: 18px; transform: rotate(-2deg); white-space: normal; }
-    .note svg { display: none; }
     .ln { grid-template-columns: 1fr; }
     .vg-name { grid-column: 1; }
     .owa-mb-l { display: none; }
@@ -403,7 +377,6 @@
     .phone { margin: 0 auto; }
     .bub.ai { margin-left: 56px; }
     .index { grid-template-columns: 1fr; }
-    .interlude { min-height: 60vh; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -419,24 +392,33 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#top">websystems<span>.pro</span></a>
+    <a class="logo" href="#top" aria-label="websystems.pro — в начало">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path class="hz" d="M3 25h26" stroke-width="2" stroke-linecap="round"/>
+        <circle style="--i:0" cx="4.4" cy="18.9" r="2.3" fill="#2f7bf6"/>
+        <circle style="--i:1" cx="7.5" cy="13.5" r="2.3" fill="#19c2a6"/>
+        <circle style="--i:2" cx="12.9" cy="10.4" r="2.3" fill="#ff6a45"/>
+        <circle style="--i:3" cx="19.1" cy="10.4" r="2.3" fill="#8db86b"/>
+        <circle style="--i:4" cx="24.5" cy="13.5" r="2.3" fill="#5b7cff"/>
+        <circle style="--i:5" cx="27.6" cy="18.9" r="2.3" fill="#ffb547"/>
+      </svg>
+    </a>
     <span class="clock" aria-hidden="true">
       <svg id="clockIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
-      <span id="clockTime">07:40</span><span class="phase" id="clockPhase">рассвет</span>
+      <span id="clockTime">07:40</span><span class="phase" id="clockPhase">утро</span>
     </span>
-    <a class="top-cta" href="#contact">Написать</a>
+    <a class="top-cta" href="#contact">Контакты</a>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- 07:40 — рассвет -->
-  <section class="hero" data-time="07:40" data-sky="#191c37,#7d5a77" data-ink="light" data-stars="0.7" data-phase="рассвет">
+  <!-- 07:40 — утро -->
+  <section class="hero" data-time="07:40" data-sky="#191c37,#7d5a77" data-ink="light" data-stars="0.7" data-phase="утро">
     <div class="wrap">
-      <div class="eyebrow">07:40 · рассвет · Илья Баженов</div>
-      <h1>Шесть приложений<br><em>на&nbsp;один рабочий день</em></h1>
-      <p class="lead">Я делаю софт для Mac и ИИ-агентов. Мои приложения находят ссылку на созвон, расшифровывают его, разбирают задачи из Jira, пишут код, пока я гуляю, и сторожат сеть по ночам. <b>Листайте вниз: у каждого приложения здесь свой час.</b></p>
-      <a class="now-pill" id="nowLink" href="#routekeeper" hidden></a>
+      <div class="eyebrow">Илья Баженов</div>
+      <h1>Шесть приложений<br>для рабочего дня</h1>
+      <p class="lead">Я делаю приложения для Mac и инструменты для работы с ИИ-агентами. Здесь шесть из них, в том порядке, в каком они пригождаются за день.</p>
     </div>
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="wrap arc-wrap">
@@ -452,7 +434,6 @@
         <a class="pt" href="#routekeeper" style="--x:92;--y:31"><img src="assets/icons/routekeeper.png" alt="Routekeeper"><span class="lbl"><b>Routekeeper</b>21:30</span></a>
       </div>
     </div>
-    <span class="scroll-hint" aria-hidden="true">день начинается ↓</span>
   </section>
 
   <!-- 09:48 — OWA Widget -->
@@ -465,7 +446,7 @@
           <div><b>OWA Widget</b><span>macOS 13+ · бесплатно · open source</span></div>
         </div>
         <h2>Встреча через 12&nbsp;минут. Ссылка уже здесь.</h2>
-        <p class="story">Утро начинается с календаря. OWA Widget живёт в строке меню и собирает встречи из Exchange, Google и iCloud на одном таймлайне. Ссылку на Teams, Zoom, Webex, Google Meet или KTalk он находит сам и за полчаса до начала показывает кнопку «Подключиться».</p>
+        <p class="story">Календарь в строке меню: встречи из Exchange, Google и iCloud на одном таймлайне. Ссылку на Teams, Zoom, Webex, Google Meet или KTalk приложение находит само, а кнопка «Подключиться» появляется за полчаса до начала.</p>
         <div class="ch-links">
           <a class="go" href="https://ilyabazhenov.github.io/mac-owa-widget/ru/">Сайт проекта <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
           <a class="sub" href="https://github.com/ilyabazhenov/mac-owa-widget">Исходники на GitHub</a>
@@ -489,7 +470,6 @@
             <div class="owa-kbd step" style="--d:.7s"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>J</kbd><span>подключиться из любого приложения</span></div>
           </div>
         </div>
-        <span class="note" style="left:-8px;bottom:-54px">ссылку больше не ищу в письме</span>
       </div>
     </div>
   </section>
@@ -503,8 +483,8 @@
           <img src="assets/icons/voicegrep.png" alt="" width="52" height="52">
           <div><b>VoiceGrep</b><span>macOS 14.4+ · v1.9 · 100% локально</span></div>
         </div>
-        <h2>Созвон закончился. Расшифровка уже готова.</h2>
-        <p class="story">Планёрка шла 47 минут, и всё это время VoiceGrep записывал две дорожки: мой микрофон и звук звонка. После звонка он расшифровал запись прямо на Mac и подписал реплики. Собеседников он узнаёт по голосу: каждого нужно назвать один раз, дальше он узнаёт их сам.</p>
+        <h2>Расшифровка созвонов прямо на Mac.</h2>
+        <p class="story">Записывает две дорожки — микрофон и звук звонка. После звонка расшифровывает запись на устройстве и подписывает реплики. Собеседников узнаёт по голосу: каждого достаточно назвать один раз. В облако ничего не отправляется.</p>
         <div class="ch-links">
           <a class="go" href="https://ilyabazhenov.github.io/voicegrep-releases/">Сайт проекта <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
           <a class="sub" href="https://github.com/ilyabazhenov/voicegrep-releases/releases/latest">Скачать</a>
@@ -520,9 +500,8 @@
             <div class="ln step" style="--d:.8s"><span class="who" style="--sp:#c0567a">Дима<em>по голосу</em></span><p>Тогда я обновлю чек-лист релиза.</p></div>
             <div class="ln unk step" style="--d:1.15s"><span class="who" style="--sp:#a46400">Собеседник 4<em>новый голос</em></span><p>По оплате с нашей стороны всё готово.</p><span class="vg-name">Назвать…</span></div>
           </div>
-          <div class="vg-foot mono">Whisper на Neural Engine · ни байта в облако</div>
+          <div class="vg-foot mono">Whisper на Neural Engine · без облака</div>
         </div>
-        <span class="note" style="right:-6px;top:-46px">назвал один раз — дальше сам</span>
       </div>
     </div>
   </section>
@@ -536,8 +515,8 @@
           <img src="assets/icons/impagent.png" alt="" width="52" height="52">
           <div><b>ImpAgent</b><span>macOS и Windows · MCP · своя модель</span></div>
         </div>
-        <h2>Разбирается в задаче, а не пересказывает её.</h2>
-        <p class="story">После планёрки — задача: ночью упала сборка. ImpAgent сам сходит в Jira, Jenkins, Bitbucket и TestOps, сопоставит найденное и скажет, в чём дело. Правки предлагает по одной, с диффом и подтверждением. Через MCP эти же инструменты получают Cursor, Claude Code и Codex.</p>
+        <h2>Jira, Jenkins и Bitbucket в одном окне с агентом.</h2>
+        <p class="story">Чат с моделью, файлы, шелл и git, а рядом Jira, Confluence, Bitbucket, Jenkins, TestOps и Kubernetes. Агент сам собирает контекст задачи, правки предлагает по одной, с диффом и подтверждением. Через MCP те же инструменты доступны в Cursor, Claude Code и Codex.</p>
         <div class="ch-links">
           <a class="go" href="https://ilyabazhenov.github.io/imp-agent-crossplatform-releases/">Сайт проекта <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
           <a class="sub" href="https://github.com/ilyabazhenov/imp-agent-crossplatform-releases/releases/latest">Скачать</a>
@@ -559,13 +538,12 @@
             <div class="imp-act step" style="--d:1.35s"><span class="pri">Применить</span><span>Отклонить</span></div>
           </div>
         </div>
-        <span class="note" style="left:-4px;bottom:-50px">одно окно вместо шести вкладок</span>
       </div>
     </div>
   </section>
 
   <!-- 13:10 — Walkship -->
-  <section class="ch" id="walkship" data-time="13:10" data-sky="#e3ecd6,#f3f4e6" data-ink="dark" data-phase="обед" style="--accent:#4e7f2c">
+  <section class="ch" id="walkship" data-time="13:10" data-sky="#e3ecd6,#f3f4e6" data-ink="dark" data-phase="день" style="--accent:#4e7f2c">
     <div class="wrap ch-grid flip">
       <div class="ch-text rv">
         <div class="ch-time">13:10</div>
@@ -574,7 +552,7 @@
           <div><b>Walkship</b><span>бета · Mac + телефон · RU / EN</span></div>
         </div>
         <h2>Ушёл гулять — вернулся к&nbsp;готовому PR.</h2>
-        <p class="story">Обед — время пройтись. Обсуждаю фичу вслух: Walkship знает код, историю git и прошлые разговоры. Говорю «оформляй», и разговор становится спецификацией с критериями готовности, а Claude Code или Codex реализует её на моём Mac. Пуш на телефон приходит раньше, чем я возвращаюсь.</p>
+        <p class="story">Голосовой партнёр для проектов: фичу можно обсудить на прогулке, а Walkship знает код, историю git и прошлые разговоры. По команде «оформляй» разговор становится спецификацией с критериями готовности, Claude Code или Codex реализует её на вашем Mac, а на телефон приходит пуш.</p>
         <div class="ch-links">
           <a class="go" href="https://walkship.app/ru/">Сайт проекта <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
           <a class="sub" href="https://github.com/ilyabazhenov/walkship">GitHub</a>
@@ -598,7 +576,6 @@
             </div>
           </div>
         </div>
-        <span class="note" style="left:30px;bottom:-44px">пришло, пока шёл обратно</span>
       </div>
     </div>
   </section>
@@ -612,8 +589,8 @@
           <img src="assets/icons/seatkey.png" alt="" width="52" height="52">
           <div><b>Seatkey</b><span>macOS · Apple Silicon · OpenAI / Anthropic API</span></div>
         </div>
-        <h2>Your seat is your&nbsp;key.</h2>
-        <p class="story">Ближе к вечеру — заметки. Obsidian, Raycast и Open WebUI просят «OpenAI API» и ключ к нему, а подписка на Claude Code у меня уже есть. Seatkey поднимает на 127.0.0.1 обычный OpenAI-совместимый адрес, и подписка работает в каждом из них. Без API-ключей и второго счёта.</p>
+        <h2>Подписка на Claude Code вместо API-ключа.</h2>
+        <p class="story">Obsidian, Raycast, Open WebUI и свои скрипты просят OpenAI API. Seatkey поднимает на 127.0.0.1 совместимый адрес и отвечает через Claude Code, Codex или Cursor — по подписке, которая у вас уже есть. Отдельный ключ и второй счёт не нужны.</p>
         <div class="ch-links">
           <a class="go" href="https://ilyabazhenov.github.io/seatkey-releases/">Сайт проекта <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
           <a class="sub" href="https://github.com/ilyabazhenov/seatkey-releases/releases/latest">Скачать</a>
@@ -647,16 +624,7 @@
             <div class="d step" style="--d:.8s"># ответил Claude Code, по подписке</div>
           </div>
         </div>
-        <span class="note" style="right:0;top:-44px">одна подписка — все приложения</span>
       </div>
-    </div>
-  </section>
-
-  <!-- 19:40 — закат -->
-  <section class="interlude" data-time="19:40" data-sky="#3a2d55,#b06a6a" data-ink="light" data-stars="0.15" data-phase="закат">
-    <div class="wrap rv">
-      <div class="mono">19:40 · закат</div>
-      <p>Рабочие вкладки закрыты. А&nbsp;сеть никуда не делась.</p>
     </div>
   </section>
 
@@ -669,10 +637,10 @@
           <img src="assets/icons/routekeeper.png" alt="" width="52" height="52">
           <div><b>Routekeeper</b><span>публичная бета · macOS 14+ · нотаризован</span></div>
         </div>
-        <h2>Каждому приложению — свой путь.</h2>
-        <p class="story">Ночью за сетью следит Routekeeper. Для каждого приложения он решает: пустить через прокси, напрямую, заблокировать или спросить меня. Мессенджер идёт через прокси, банк напрямую, а незнакомая программа сидит тихо. И ничего не уходит мимо прокси.</p>
+        <h2>Свой маршрут для каждого приложения.</h2>
+        <p class="story">Для каждого приложения — своё правило: через прокси, напрямую, блокировать или спрашивать. Например, мессенджер через прокси, банк напрямую, незнакомая программа заблокирована. Всё, что прошло мимо прокси, видно отдельно.</p>
         <div class="ch-links">
-          <a class="go" href="https://getroutekeeper.app/">getroutekeeper.app <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+          <a class="go" href="https://getroutekeeper.app/">Сайт проекта <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
           <a class="sub" href="https://github.com/ilyabazhenov/routekeeper">GitHub</a>
         </div>
       </div>
@@ -688,32 +656,32 @@
           </div>
           <div class="rk-foot mono"><span>Мимо прокси: <b>0</b></span><span>Правил: 14</span></div>
         </div>
-        <span class="note" style="left:-6px;bottom:-50px">фонарь горит всю ночь</span>
       </div>
     </div>
   </section>
 
-  <!-- 23:50 — конец дня -->
-  <section class="end" id="contact" data-time="23:50" data-sky="#07080d,#0c0e17" data-ink="light" data-stars="1" data-phase="полночь">
+  <!-- 23:50 — все проекты и контакты -->
+  <section class="end" id="contact" data-time="23:50" data-sky="#07080d,#0c0e17" data-ink="light" data-stars="1" data-phase="ночь">
     <div class="wrap">
       <div class="rv">
-        <div class="moon" aria-hidden="true"></div>
-        <h2>Вот и весь день.</h2>
-        <p class="story">Если хоть одно из этих приложений сэкономит вам час, значит, всё было не зря. Нашли баг, есть идея или нужен похожий инструмент под вашу задачу — напишите.</p>
-        <div class="ch-links">
-          <!-- TODO: почта / Telegram, например <a class="go" href="mailto:hello@websystems.pro">hello@websystems.pro</a> -->
-          <a class="go" href="https://github.com/ilyabazhenov">GitHub — ilyabazhenov <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
-        </div>
-        <span class="sign">— Илья</span>
+        <h2>Все проекты</h2>
+        <nav class="index" aria-label="Все проекты">
+          <a href="https://ilyabazhenov.github.io/mac-owa-widget/ru/"><img src="assets/icons/owawidget.png" alt=""><span><b>OWA Widget</b><span>календарь в строке меню</span></span></a>
+          <a href="https://ilyabazhenov.github.io/voicegrep-releases/"><img src="assets/icons/voicegrep.png" alt=""><span><b>VoiceGrep</b><span>расшифровка звонков на Mac</span></span></a>
+          <a href="https://ilyabazhenov.github.io/imp-agent-crossplatform-releases/"><img src="assets/icons/impagent.png" alt=""><span><b>ImpAgent</b><span>агент для рабочих задач</span></span></a>
+          <a href="https://walkship.app/ru/"><img src="assets/icons/walkship.png" alt=""><span><b>Walkship</b><span>голосовой партнёр для кода</span></span></a>
+          <a href="https://ilyabazhenov.github.io/seatkey-releases/"><img src="assets/icons/seatkey.png" alt=""><span><b>Seatkey</b><span>подписка как OpenAI API</span></span></a>
+          <a href="https://getroutekeeper.app/"><img src="assets/icons/routekeeper.png" alt=""><span><b>Routekeeper</b><span>маршруты для приложений</span></span></a>
+        </nav>
       </div>
-      <nav class="index rv" aria-label="Все проекты">
-        <a href="https://ilyabazhenov.github.io/mac-owa-widget/ru/"><img src="assets/icons/owawidget.png" alt=""><span><b>OWA Widget</b><span>календарь в строке меню</span></span><i>09:48</i></a>
-        <a href="https://ilyabazhenov.github.io/voicegrep-releases/"><img src="assets/icons/voicegrep.png" alt=""><span><b>VoiceGrep</b><span>расшифровка звонков на Mac</span></span><i>10:47</i></a>
-        <a href="https://ilyabazhenov.github.io/imp-agent-crossplatform-releases/"><img src="assets/icons/impagent.png" alt=""><span><b>ImpAgent</b><span>агент для рабочих задач</span></span><i>11:30</i></a>
-        <a href="https://walkship.app/ru/"><img src="assets/icons/walkship.png" alt=""><span><b>Walkship</b><span>голосовой партнёр для кода</span></span><i>13:10</i></a>
-        <a href="https://ilyabazhenov.github.io/seatkey-releases/"><img src="assets/icons/seatkey.png" alt=""><span><b>Seatkey</b><span>подписка как OpenAI API</span></span><i>17:20</i></a>
-        <a href="https://getroutekeeper.app/"><img src="assets/icons/routekeeper.png" alt=""><span><b>Routekeeper</b><span>свой путь каждому приложению</span></span><i>21:30</i></a>
-      </nav>
+      <div class="contact rv">
+        <div>
+          <h2>Контакты</h2>
+          <p class="story">Вопросы, баги и предложения по любому из проектов — пишите на GitHub.</p>
+        </div>
+        <!-- TODO: почта / Telegram, например <a class="go" href="mailto:hello@websystems.pro">hello@websystems.pro</a> -->
+        <a class="go" href="https://github.com/ilyabazhenov">github.com/ilyabazhenov <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 11l6-6M6 5h5v5"/></svg></a>
+      </div>
     </div>
   </section>
 </main>
@@ -755,20 +723,7 @@
   }
   wave.innerHTML = html;
 
-  // «сейчас у вас…»
-  var slots = [
-    [360, 600, 'owawidget', 'OWA Widget'], [600, 675, 'voicegrep', 'VoiceGrep'],
-    [675, 765, 'impagent', 'ImpAgent'], [765, 930, 'walkship', 'Walkship'],
-    [930, 1200, 'seatkey', 'Seatkey']
-  ];
-  var now = new Date(), m = now.getHours() * 60 + now.getMinutes(), pick = ['routekeeper', 'Routekeeper'];
-  slots.forEach(function (s) { if (m >= s[0] && m < s[1]) pick = [s[2], s[3]]; });
   var pad = function (n) { return (n < 10 ? '0' : '') + n; };
-  var nowLink = document.getElementById('nowLink');
-  nowLink.href = '#' + pick[0];
-  nowLink.innerHTML = '<img src="assets/icons/' + pick[0] + '.png" alt=""><span>Сейчас у вас ' + pad(now.getHours()) + ':' + pad(now.getMinutes()) +
-    ' — это час <b>' + pick[1] + '</b> →</span>';
-  nowLink.hidden = false;
 
   // небо, чернила и часы по прокрутке
   var hex = function (s) { s = s.trim(); return [1, 3, 5].map(function (k) { return parseInt(s.slice(k, k + 2), 16); }); };
