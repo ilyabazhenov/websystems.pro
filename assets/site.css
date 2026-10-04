@@ -81,7 +81,7 @@ img { display: block; }
 .js .in .step { opacity: 1; transform: none; }
 
 /* ---------- hero ---------- */
-.hero { min-height: 100vh; padding: 112px 0 0; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.hero { min-height: 100vh; min-height: 100svh; padding: 112px 0 0; display: flex; flex-direction: column; position: relative; overflow: hidden; }
 .hero .wrap { width: 100%; }
 .eyebrow { font: 500 13px var(--mono); color: var(--ink-soft); letter-spacing: 0.04em; }
 h1 {
@@ -329,7 +329,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
 /* ---------- responsive ---------- */
 @media (max-width: 1020px) {
-  .ch-grid { grid-template-columns: 1fr; gap: 48px; }
+  .ch-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
   .ch-grid.flip .ch-text { order: 0; }
   .ch-visual { max-width: 620px; }
   .index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -343,11 +343,26 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .clock { justify-self: end; padding: 5px 11px; font-size: 12.5px; }
   .hero { padding-top: 100px; }
   .lead { font-size: 16.5px; }
-  .arc { height: 230px; margin-top: 64px; }
-  .pt img { width: 44px; height: 44px; }
-  .pt .lbl b { display: none; }
-  .pt .lbl { font-size: 10.5px; margin-top: 5px; }
-  .sun { width: 70px; height: 70px; bottom: -35px; }
+  /* дуга занимает всё место до низа экрана: выше и круглее, чем на десктопе */
+  .arc-wrap { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 44px; }
+  .arc { flex: 1 0 auto; height: auto; min-height: 270px; }
+  /* иконки с равным шагом по длине дуги, подписи внутри купола, у верхних — над иконкой */
+  .pt { left: calc(var(--mx) * 1%); bottom: calc(var(--my) * 1%); }
+  .pt:nth-of-type(1) { --mx: 7.4; --my: 29.5; }
+  .pt:nth-of-type(2) { --mx: 20.1; --my: 57; }
+  .pt:nth-of-type(3) { --mx: 36.9; --my: 81.7; }
+  .pt:nth-of-type(4) { --mx: 63.1; --my: 81.7; }
+  .pt:nth-of-type(5) { --mx: 79.9; --my: 57; }
+  .pt:nth-of-type(6) { --mx: 92.6; --my: 29.5; }
+  .pt img { width: 50px; height: 50px; }
+  .pt .lbl { position: absolute; top: 50%; margin: 0; font-size: 11.5px; line-height: 1.35; }
+  .pt:nth-of-type(-n+2) .lbl { left: 100%; padding-left: 10px; transform: translateY(-50%); text-align: left; }
+  .pt:nth-of-type(n+5) .lbl { right: 100%; padding-right: 10px; transform: translateY(-50%); text-align: right; }
+  /* к вершине дуга поднимается выше иконок, поэтому подписи сдвинуты наружу */
+  .pt:nth-of-type(3) .lbl, .pt:nth-of-type(4) .lbl { top: auto; bottom: 100%; padding-bottom: 8px; }
+  .pt:nth-of-type(3) .lbl { right: 0; text-align: right; }
+  .pt:nth-of-type(4) .lbl { left: 0; text-align: left; }
+  .sun { width: 70px; height: 70px; left: -24px; bottom: -35px; }
   .ch { padding: 96px 0 72px; min-height: auto; }
   .ln { grid-template-columns: 1fr; }
   .vg-name { grid-column: 1; }
@@ -357,6 +372,22 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .phone { margin: 0 auto; }
   .bub.ai { margin-left: 56px; }
   .index { grid-template-columns: 1fr; }
+}
+@media (max-width: 359px) {
+  /* средние подписи иначе сходятся в центре купола */
+  .pt:nth-of-type(2) { --mx: 17; --my: 50.7; }
+  .pt:nth-of-type(5) { --mx: 83; --my: 50.7; }
+  .pt img { width: 44px; height: 44px; }
+  .pt .lbl { font-size: 10.5px; }
+  .pt .lbl b { font-size: 12px; }
+  .pt:nth-of-type(-n+2) .lbl { padding-left: 8px; }
+  .pt:nth-of-type(n+5) .lbl { padding-right: 8px; }
+  /* в попапе OWA кнопки переносятся под текст, иначе обрезаются */
+  .owa-body { padding: 12px; }
+  .owa-pop { padding: 10px; }
+  .owa-inv { grid-template-columns: auto minmax(0, 1fr); }
+  .owa-r { grid-template-columns: 40px minmax(0, 1fr); }
+  .owa-btn, .owa-join { grid-column: 2; justify-self: start; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
