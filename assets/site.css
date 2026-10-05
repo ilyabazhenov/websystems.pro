@@ -338,6 +338,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 /* дневные главы приглушены (небо — data-sky-dark), а макеты показаны в тёмном оформлении */
 :root[data-theme="dark"] { color-scheme: dark; }
 :root[data-theme="dark"] .hero-glow { opacity: .6; }
+/* крупное время главы: 14% светлых чернил на тёмном небе почти не видно */
+:root[data-theme="dark"] .ch-time { color: rgba(245, 240, 232, 0.3); }
 :root[data-theme="dark"] :is(.owa, .vg, .seat) { box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.07); }
 
 :root[data-theme="dark"] .owa { background: #1e1e20; color: #ececee; }
