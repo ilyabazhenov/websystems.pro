@@ -317,6 +317,59 @@
     </div>
   </section>
 
+  <!-- 22:40 — как приложения работают вместе -->
+  <section class="ch eco" id="ecosystem" data-time="22:40" data-sky="#0e1430,#090d1c" data-ink="light" data-stars="0.95" data-phase="ночь">
+    <div class="wrap">
+      <div class="eco-head rv">
+        <div class="ch-time">22:40</div>
+        <h2>Вместе они работают на&nbsp;вашего агента.</h2>
+        <p class="story">Это Claude Code или Codex на вашем Mac. Слева приложения, которые рассказывают ему о вашем дне, справа — те, что дают ему работу и доступ.</p>
+      </div>
+
+      <div class="eco-sky rv" id="ecoSky">
+        <svg class="eco-lines" id="ecoLines" aria-hidden="true"></svg>
+        <div class="eco-rise" aria-hidden="true"><div class="eco-orb"></div></div>
+        <div class="horizon" aria-hidden="true"></div>
+        <a class="eco-pt" data-app="owa" href="#owawidget" style="--x:8;--y:25;--c:#2f7bf6"><img src="assets/icons/owawidget.png" alt=""><span class="lbl"><b>OWA Widget</b>встречи, коллеги</span></a>
+        <a class="eco-pt" data-app="vg" href="#voicegrep" style="--x:25;--y:53;--c:#19c2a6"><img src="assets/icons/voicegrep.png" alt=""><span class="lbl"><b>VoiceGrep</b>договорённости</span></a>
+        <a class="eco-pt" data-app="imp" href="#impagent" style="--x:42;--y:69;--c:#ff6a45"><img src="assets/icons/impagent.png" alt=""><span class="lbl"><b>ImpAgent</b>задачи, сборки</span></a>
+        <a class="eco-pt" data-app="walk" href="#walkship" style="--x:58;--y:69;--c:#8db86b"><img src="assets/icons/walkship.png" alt=""><span class="lbl"><b>Walkship</b>спецификации</span></a>
+        <a class="eco-pt" data-app="seat" href="#seatkey" style="--x:75;--y:53;--c:#5b7cff"><img src="assets/icons/seatkey.png" alt=""><span class="lbl"><b>Seatkey</b>подписка как API</span></a>
+        <a class="eco-pt" data-app="rk" data-out="1" href="#routekeeper" style="--x:92;--y:25;--c:#ffb547"><img src="assets/icons/routekeeper.png" alt=""><span class="lbl"><b>Routekeeper</b>маршрут в сеть</span></a>
+        <div class="eco-agent"><b>Ваш агент</b><span>Claude Code · Codex</span></div>
+        <span class="eco-cap l">знают о вашем дне</span>
+        <span class="eco-cap r">дают работу и доступ</span>
+      </div>
+
+      <div class="eco-ex rv">
+        <div class="eco-ex-h">Например</div>
+        <div class="eco-sc-list">
+          <button class="eco-sc" type="button" data-apps="owa vg imp" aria-pressed="false">
+            <span class="q">«Подготовь меня к планёрке»</span>
+            <ul>
+              <li style="--c:#2f7bf6"><i></i><span><b>OWA Widget</b> — когда и кто придёт</span></li>
+              <li style="--c:#19c2a6"><i></i><span><b>VoiceGrep</b> — что решили в прошлый раз</span></li>
+              <li style="--c:#ff6a45"><i></i><span><b>ImpAgent</b> — задачи и сборки по теме</span></li>
+            </ul>
+          </button>
+          <button class="eco-sc" type="button" data-apps="walk rk" aria-pressed="false">
+            <span class="q">«Сделай, что обсудили на прогулке»</span>
+            <ul>
+              <li style="--c:#8db86b"><i></i><span><b>Walkship</b> — спецификация с критериями</span></li>
+              <li style="--c:#ffb547"><i></i><span><b>Routekeeper</b> — npm и git через прокси</span></li>
+            </ul>
+          </button>
+          <button class="eco-sc" type="button" data-apps="seat" aria-pressed="false">
+            <span class="q">Obsidian: «Сожми заметку»</span>
+            <ul>
+              <li style="--c:#5b7cff"><i></i><span><b>Seatkey</b> — ответ по подписке Claude Code, без API-ключа</span></li>
+            </ul>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 23:50 — все проекты и контакты -->
   <section class="end" id="contact" data-time="23:50" data-sky="#07080d,#0c0e17" data-ink="light" data-stars="1" data-phase="ночь">
     <div class="wrap">

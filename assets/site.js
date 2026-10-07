@@ -96,6 +96,75 @@
   document.addEventListener('visibilitychange', follow);
   setTheme(root.dataset.theme);
 
+  // созвездие: дуга дня и лучи от приложений к агенту на горизонте
+  (function () {
+    var eco = document.getElementById('ecosystem'); if (!eco) return;
+    var sky = document.getElementById('ecoSky'), svg = document.getElementById('ecoLines');
+    var pts = Array.prototype.slice.call(sky.querySelectorAll('.eco-pt'));
+    var NS = 'http://www.w3.org/2000/svg';
+
+    function draw() {
+      var W = sky.clientWidth, H = sky.clientHeight;
+      svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      svg.innerHTML = '';
+      // та же дуга, что в первом экране, только ниже: точки приложений лежат на ней
+      var d = '';
+      for (var x = 0; x <= 100; x += 2) {
+        var y = H - H * 0.008 * (12 + 76 * Math.sin(Math.PI * x / 100));
+        d += (x ? ' L ' : 'M ') + (W * x / 100).toFixed(1) + ' ' + y.toFixed(1);
+      }
+      var arc = document.createElementNS(NS, 'path'); arc.setAttribute('class', 'arc'); arc.setAttribute('d', d); svg.appendChild(arc);
+      var ax = W / 2, ay = H, sr = pts[0].querySelector('img').offsetWidth / 2 + 6, ar = 50;
+      pts.forEach(function (p) {
+        var cs = getComputedStyle(p), px = W * parseFloat(cs.getPropertyValue('--x')) / 100, py = H - H * parseFloat(cs.getPropertyValue('--y')) / 100;
+        var dx = ax - px, dy = ay - py, len = Math.sqrt(dx * dx + dy * dy), ux = dx / len, uy = dy / len;
+        var a = [px + ux * sr, py + uy * sr], b = [ax - ux * ar, ay - uy * ar];
+        if (p.dataset.out) { var t = a; a = b; b = t; } // Routekeeper: агент выходит в сеть, а не приходит к нему
+        var ray = document.createElementNS(NS, 'path');
+        ray.setAttribute('class', 'ray'); ray.dataset.app = p.dataset.app;
+        ray.style.setProperty('--c', cs.getPropertyValue('--c'));
+        ray.setAttribute('d', 'M ' + a[0].toFixed(1) + ' ' + a[1].toFixed(1) + ' L ' + b[0].toFixed(1) + ' ' + b[1].toFixed(1));
+        svg.appendChild(ray);
+      });
+      apply();
+    }
+
+    // подсветка: пример или одно приложение
+    var cards = Array.prototype.slice.call(eco.querySelectorAll('.eco-sc'));
+    var active = null;
+    function apply() {
+      var apps = active ? active.split(' ') : [];
+      eco.classList.toggle('focus', apps.length > 0);
+      Array.prototype.forEach.call(eco.querySelectorAll('[data-app]'), function (el) {
+        el.classList.toggle('on', apps.indexOf(el.dataset.app) >= 0);
+      });
+      cards.forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.apps === active); });
+    }
+    function set(apps) { active = apps; apply(); }
+
+    // сами по очереди, пока посетитель не тронул блок
+    var auto = !matchMedia('(prefers-reduced-motion: reduce)').matches, k = 0, timer = null;
+    function stop() { auto = false; clearInterval(timer); }
+    function tick() { set(cards[k % cards.length].dataset.apps); k++; }
+    new IntersectionObserver(function (en, io) {
+      if (en[0].isIntersecting && auto) { io.disconnect(); setTimeout(function () { if (auto) { tick(); timer = setInterval(tick, 4200); } }, 1400); }
+    }, { threshold: 0.5 }).observe(sky);
+
+    cards.forEach(function (c) {
+      c.addEventListener('click', function () { stop(); set(c.dataset.apps); });
+      c.addEventListener('mouseenter', function () { stop(); set(c.dataset.apps); });
+      c.addEventListener('focus', function () { stop(); set(c.dataset.apps); });
+    });
+    pts.forEach(function (p) {
+      p.addEventListener('mouseenter', function () { stop(); set(p.dataset.app); });
+      p.addEventListener('focus', function () { stop(); set(p.dataset.app); });
+    });
+
+    addEventListener('resize', draw);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+    draw();
+  })();
+
   // появление глав
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
