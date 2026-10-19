@@ -367,6 +367,61 @@ h1 {
 .cp-foot i { font-style: normal; color: #0e8c82; }
 .cp-foot b { margin-left: auto; font-weight: 500; color: #0b6f6a; }
 
+/* ----- Sash ----- */
+/* телефон в режиме трекпада: сверху экран Mac, ниже окна, клавиши и трекпад; телефон одинаковый в обеих темах */
+.sh {
+  padding-top: 30px; color: #e6eaf2;
+  background: radial-gradient(70% 55% at 50% 38%, rgba(90, 146, 255, 0.22), transparent 70%), #141a2c;
+  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(90, 146, 255, 0.16);
+}
+.sh-phone {
+  width: 272px; margin: 0 auto; padding: 8px 9px 12px; border-radius: 34px;
+  background: #0b0d12; box-shadow: 0 0 0 2px #2b303a, 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+}
+.sh-st { display: flex; justify-content: space-between; align-items: center; padding: 3px 14px 7px; font-size: 11px; }
+.sh-sig { display: flex; align-items: flex-end; gap: 2px; }
+.sh-sig i { width: 3px; border-radius: 1px; background: currentColor; }
+.sh-sig i:nth-child(1) { height: 4px; }
+.sh-sig i:nth-child(2) { height: 6px; }
+.sh-sig i:nth-child(3) { height: 8px; }
+.sh-sig b { width: 17px; height: 9px; margin-left: 4px; border: 1.5px solid currentColor; border-radius: 3px; box-shadow: inset 0 0 0 1px #0b0d12; background: linear-gradient(90deg, currentColor 70%, transparent 70%); }
+.sh-mac { position: relative; height: 176px; border-radius: 6px; overflow: hidden; background: linear-gradient(160deg, #3e6cc4, #a9c1ea); }
+.sh-mb { display: flex; align-items: center; gap: 8px; height: 15px; padding: 0 7px; font-size: 8.5px; color: #1d2330; background: rgba(246, 248, 251, 0.8); }
+.sh-mb span { color: #4a5468; }
+.sh-clk { margin-left: auto; }
+.sh-win { position: absolute; left: 16px; right: 16px; top: 28px; border-radius: 6px; overflow: hidden; background: #15171d; box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.5); }
+.sh-tb { display: flex; align-items: center; gap: 4px; height: 17px; padding: 0 7px; background: #2a2d35; }
+.sh-tb i { width: 6px; height: 6px; border-radius: 50%; background: var(--c); }
+.sh-tb span { flex: 1; margin-right: 22px; text-align: center; font-size: 8px; color: #8a93a6; }
+.sh-term { padding: 8px 9px 10px; font-size: 9.5px; line-height: 1.6; color: #c9d3e4; }
+.sh-term .p { color: #8a93a6; }
+.sh-term .ok { color: #6fd08c; }
+.sh-term .y { padding: 0 3px; border-radius: 2px; color: #fff; background: #3a7bff; }
+.sh-caret { display: inline-block; width: 5px; height: 10px; margin-left: 3px; vertical-align: -1px; background: #c9d3e4; animation: shblink 1.1s steps(1) infinite; }
+@keyframes shblink { 50% { opacity: 0; } }
+/* курсор на Mac повторяет движение пальца по трекпаду */
+.sh-cur { position: absolute; left: 150px; top: 120px; width: 12px; height: 17px; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4)); animation: shmove 6s ease-in-out infinite; }
+.sh-chips { display: flex; gap: 6px; padding: 9px 2px 0; font-size: 10.5px; }
+.sh-chips span { display: flex; align-items: center; gap: 5px; padding: 4px 8px 4px 5px; border-radius: 8px; background: #1e2128; color: #8a93a6; }
+.sh-chips span.on { color: #e6eaf2; background: rgba(58, 123, 255, 0.22); box-shadow: inset 0 0 0 1px rgba(58, 123, 255, 0.55); }
+.sh-chips i { width: 18px; height: 12px; border-radius: 2px; background: #e6eaf0; }
+.sh-chips i.t { background: #15171d; box-shadow: inset 0 3px 0 #2a2d35; }
+.sh-chips i.w { background: linear-gradient(160deg, #3e6cc4, #a9c1ea); }
+.sh-keys { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 3px; padding: 8px 2px 0; font-size: 9.5px; }
+.sh-keys span { display: grid; place-items: center; height: 24px; border-radius: 6px; background: #262a33; color: #c9d3e4; }
+.sh-keys span.on { background: #3a7bff; color: #fff; }
+.sh-pad { position: relative; height: 128px; margin: 8px 2px 0; border-radius: 14px; background: #1e2128; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04); }
+.sh-hint { position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-size: 10px; color: #5c6476; }
+.sh-touch {
+  position: absolute; left: 62%; top: 46%; width: 34px; height: 34px; margin: -17px; border-radius: 50%;
+  background: rgba(230, 234, 242, 0.16); box-shadow: 0 0 0 1px rgba(230, 234, 242, 0.25);
+  animation: shmove 6s ease-in-out infinite;
+}
+@keyframes shmove { 0%, 100% { transform: translate(0, 0); } 45%, 60% { transform: translate(-56px, -12px); } }
+.sh-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 9px; margin-top: 28px; padding: 11px 18px; font-size: 11.5px; color: #8a93a6; background: rgba(0, 0, 0, 0.22); border-top: 1px solid rgba(255, 255, 255, 0.06); }
+.sh-foot i { font-style: normal; color: #5a92ff; }
+.sh-foot b { margin-left: auto; font-weight: 500; color: #8fb3ff; }
+
 /* ----- Routekeeper ----- */
 .rk { background: #0f1530; color: #f3ecdf; box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 181, 71, 0.16), 0 0 120px -20px rgba(255, 181, 71, 0.25); }
 .rk-top { display: flex; align-items: center; gap: 10px; padding: 15px 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
@@ -565,6 +620,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .ch-grid.flip .ch-text { order: 0; }
   .ch-visual { max-width: 620px; }
   .index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* девять иконок по 68px на узкой дуге наезжают друг на друга */
+  .pt img { width: 54px; height: 54px; }
+  .pt .lbl { font-size: 11px; }
+  .pt .lbl b { font-size: 12px; }
 }
 @media (max-width: 640px) {
   body { font-size: 16px; }
@@ -582,21 +641,25 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   /* иконки с равным шагом по длине дуги, подписи внутри купола, у верхних — над иконкой */
   .pt { left: calc(var(--mx) * 1%); bottom: calc(var(--my) * 1%); }
   .pt:nth-of-type(1) { --mx: 7.4; --my: 29.5; }
-  .pt:nth-of-type(2) { --mx: 16.6; --my: 49.8; }
-  .pt:nth-of-type(3) { --mx: 27; --my: 69.1; }
-  .pt:nth-of-type(4) { --mx: 40.8; --my: 84.9; }
-  .pt:nth-of-type(5) { --mx: 59.2; --my: 84.9; }
-  .pt:nth-of-type(6) { --mx: 73; --my: 69.1; }
-  .pt:nth-of-type(7) { --mx: 83.4; --my: 49.8; }
-  .pt:nth-of-type(8) { --mx: 92.6; --my: 29.5; }
+  .pt:nth-of-type(2) { --mx: 15.3; --my: 47.2; }
+  .pt:nth-of-type(3) { --mx: 24.2; --my: 64.3; }
+  .pt:nth-of-type(4) { --mx: 35; --my: 79.7; }
+  .pt:nth-of-type(5) { --mx: 50; --my: 88; }
+  .pt:nth-of-type(6) { --mx: 65; --my: 79.7; }
+  .pt:nth-of-type(7) { --mx: 75.8; --my: 64.3; }
+  .pt:nth-of-type(8) { --mx: 84.7; --my: 47.2; }
+  .pt:nth-of-type(9) { --mx: 92.6; --my: 29.5; }
   .pt img { width: 46px; height: 46px; }
   .pt .lbl { position: absolute; top: 50%; margin: 0; font-size: 11.5px; line-height: 1.35; }
   .pt:nth-of-type(-n+2) .lbl { left: 100%; padding-left: 10px; transform: translateY(-50%); text-align: left; }
-  .pt:nth-of-type(n+7) .lbl { right: 100%; padding-right: 10px; transform: translateY(-50%); text-align: right; }
-  /* к вершине дуга поднимается выше иконок, поэтому подписи над иконками: крайние сдвинуты наружу */
-  .pt:nth-of-type(n+3):nth-of-type(-n+6) .lbl { top: auto; bottom: 100%; padding-bottom: 8px; }
-  .pt:nth-of-type(3) .lbl { right: 0; text-align: right; }
-  .pt:nth-of-type(4) .lbl, .pt:nth-of-type(5) .lbl { left: 50%; transform: translateX(-50%); text-align: center; }
+  .pt:nth-of-type(n+8) .lbl { right: 100%; padding-right: 10px; transform: translateY(-50%); text-align: right; }
+  /* к вершине дуга поднимается выше иконок, поэтому подписи над иконками: крайние сдвинуты наружу,
+     у третьей и седьмой — ещё дальше, чтобы не задеть соседнюю иконку */
+  .pt:nth-of-type(n+3):nth-of-type(-n+7) .lbl { top: auto; bottom: 100%; padding-bottom: 8px; }
+  .pt:nth-of-type(3) .lbl { right: 14px; text-align: right; }
+  .pt:nth-of-type(7) .lbl { left: 14px; text-align: left; }
+  .pt:nth-of-type(4) .lbl { right: 0; text-align: right; }
+  .pt:nth-of-type(5) .lbl { left: 50%; transform: translateX(-50%); text-align: center; }
   .pt:nth-of-type(6) .lbl { left: 0; text-align: left; }
   .sun { width: 70px; height: 70px; left: -24px; bottom: -35px; }
   .ch { padding: 96px 0 72px; min-height: auto; }
@@ -615,11 +678,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .pt .lbl { font-size: 10.5px; }
   .pt .lbl b { font-size: 12px; }
   .pt:nth-of-type(-n+2) .lbl { padding-left: 8px; }
-  .pt:nth-of-type(n+7) .lbl { padding-right: 8px; }
-  .pt:nth-of-type(4) .lbl { left: auto; right: 0; transform: none; text-align: right; }
-  .pt:nth-of-type(5) .lbl { left: 0; transform: none; text-align: left; }
-  .pt:nth-of-type(3) .lbl { right: 8px; }
-  .pt:nth-of-type(6) .lbl { left: 8px; }
+  .pt:nth-of-type(n+8) .lbl { padding-right: 8px; }
   /* в попапе OWA кнопки переносятся под текст, иначе обрезаются */
   .owa-body { padding: 12px; }
   .owa-pop { padding: 10px; }

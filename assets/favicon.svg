@@ -1,12 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
   <style>.h{stroke:#1d1913}@media (prefers-color-scheme:dark){.h{stroke:#f5f0e8}}</style>
   <path class="h" d="M3 25h26" stroke-opacity=".55" stroke-width="2.2" stroke-linecap="round"/>
-  <circle cx="4.0" cy="21.0" r="2.25" fill="#2f7bf6"/>
-  <circle cx="5.5" cy="16.1" r="2.25" fill="#19c2a6"/>
-  <circle cx="8.9" cy="12.3" r="2.25" fill="#ff6a45"/>
-  <circle cx="13.5" cy="10.3" r="2.25" fill="#8db86b"/>
-  <circle cx="18.5" cy="10.3" r="2.25" fill="#f27aa0"/>
-  <circle cx="23.1" cy="12.3" r="2.25" fill="#5b7cff"/>
-  <circle cx="26.5" cy="16.1" r="2.25" fill="#14a39a"/>
-  <circle cx="28.0" cy="21.0" r="2.25" fill="#ffb547"/>
+  <circle cx="4.0" cy="21.0" r="2.0" fill="#2f7bf6"/>
+  <circle cx="5.2" cy="16.7" r="2.0" fill="#19c2a6"/>
+  <circle cx="7.9" cy="13.2" r="2.0" fill="#ff6a45"/>
+  <circle cx="11.6" cy="10.8" r="2.0" fill="#8db86b"/>
+  <circle cx="16.0" cy="10.0" r="2.0" fill="#f27aa0"/>
+  <circle cx="20.4" cy="10.8" r="2.0" fill="#5b7cff"/>
+  <circle cx="24.1" cy="13.2" r="2.0" fill="#14a39a"/>
+  <circle cx="26.8" cy="16.7" r="2.0" fill="#a57cf0"/>
+  <circle cx="28.0" cy="21.0" r="2.0" fill="#ffb547"/>
 </svg>
