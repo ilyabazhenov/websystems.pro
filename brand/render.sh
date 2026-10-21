@@ -15,4 +15,6 @@ shot touch-icon.html 180 180 ../assets/apple-touch-icon.png
 shot favicon.html 64 64 favicon-64.png
 magick favicon-64.png \( -clone 0 -resize 32x32 \) \( -clone 0 -resize 16x16 \) -delete 0 ../favicon.ico
 rm favicon-64.png
-echo "готово: assets/og.png, assets/og-en.png, assets/apple-touch-icon.png, favicon.ico"
+# иконки приложений для страниц: 160 px WebP из PNG-исходников (PNG остаются для og.html)
+for f in ../assets/icons/*.png; do magick "$f" -resize 160x160 -define webp:alpha-quality=100 -quality 88 "${f%.png}.webp"; done
+echo "готово: assets/og.png, assets/og-en.png, assets/apple-touch-icon.png, favicon.ico, assets/icons/*.webp"
